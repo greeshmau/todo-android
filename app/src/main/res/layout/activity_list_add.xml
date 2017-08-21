@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.umapathi.greeshma.todoapplication.ListAddActivity">
+
+    <Button
+        android:id="@+id/btn_AddItem"
+        android:layout_width="386dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginRight="8dp"
+        android:onClick="clickAddItem"
+        android:text="@string/AddItem_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="8dp"
+        tools:layout_editor_absoluteY="528dp"
+        tools:layout_editor_absoluteX="17dp" />
+
+    <!--<EditText
+        android:id="@+id/et_NewItem"
+        android:layout_width="293dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/TypeNewItem_label"
+        android:inputType="textPersonName"
+        android:text="@string/EnterNewItem_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_AddItem"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp" />-->
+
+    <ListView
+        android:id="@+id/lv_AllItems"
+        layout="@layout/todotitle"
+        android:layout_width="380dp"
+        android:layout_height="504dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_AddItem"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<ListView
+        android:id="@+id/lv_AllItems"
+        android:layout_width="386dp"
+        android:layout_height="494dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:minHeight="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="40dp" /> -->
+
+</android.support.constraint.ConstraintLayout>
