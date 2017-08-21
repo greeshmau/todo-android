@@ -10,20 +10,20 @@
         android:layout_weight="1"
         android:text="Level"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
-    <EditText
+    <!--<EditText
         android:id="@+id/etLevel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:textSize="18sp"
         android:inputType="text"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
-    <!--<Spinner
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />-->
+    <Spinner
         android:id="@+id/spLevel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:textSize="18sp"
         android:inputType="text"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />-->
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 </LinearLayout>

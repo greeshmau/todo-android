@@ -35,7 +35,7 @@ public class ListAddActivity extends AppCompatActivity {
 
         ToDoItem item = new ToDoItem("Buy Chocolate", "TBD", "HIGH");
         todoAdapter.add(item);
-        ToDoItem item2 = new ToDoItem("Buy Chocolate2", "TBD", "HIGH");
+        ToDoItem item2 = new ToDoItem("Buy Chocolate2", "TBD", "MEDIUM");
         todoAdapter.add(item2);
         lvItems.setAdapter(todoAdapter);
 

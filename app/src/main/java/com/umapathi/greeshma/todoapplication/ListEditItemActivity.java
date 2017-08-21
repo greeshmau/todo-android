@@ -14,17 +14,24 @@ public class ListEditItemActivity extends AppCompatActivity {
     private EditText etTitle;
     private EditText etLevel;
     private Spinner spStatus;
+    private Spinner spLevel;
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo);
+
         spStatus = (Spinner) findViewById(R.id.spStatus);
         ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(this,
                 R.array.status_array, android.R.layout.simple_spinner_item);
         statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(statusAdapter);
 
+        spLevel = (Spinner) findViewById(R.id.spLevel);
+        ArrayAdapter<CharSequence> levelAdapter = ArrayAdapter.createFromResource(this,
+                R.array.level_array, android.R.layout.simple_spinner_item);
+        levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spLevel.setAdapter(levelAdapter);
 
         String ACTION = getIntent().getStringExtra("Action");
         if(ACTION.equals("Edit")) {
@@ -35,19 +42,23 @@ public class ListEditItemActivity extends AppCompatActivity {
             position = getIntent().getIntExtra("Position", 0);
 
             etTitle = (EditText) findViewById(R.id.etTitle);
+
             if (!EditingStatus.equals(null)) {
                 int spinnerPosition = statusAdapter.getPosition(EditingStatus);
                 spStatus.setSelection(spinnerPosition);
             }
 
-
+            if (!EditingLevel.equals(null)) {
+                int spinnerPosition = levelAdapter.getPosition(EditingLevel);
+                spLevel.setSelection(spinnerPosition);
+            }
 
             //etStatus = (EditText) findViewById(R.id.etStatus);
-            etLevel = (EditText) findViewById(R.id.etLevel);
+            //etLevel = (EditText) findViewById(R.id.etLevel);
 
             etTitle.setText(EditingTitle);
             //etStatus.setText(EditingStatus);
-            etLevel.setText(EditingLevel);
+            //etLevel.setText(EditingLevel);
         }
         else if(ACTION.equals("New")) {
             Toast.makeText(this, "Adding ", Toast.LENGTH_SHORT).show();
@@ -55,11 +66,11 @@ public class ListEditItemActivity extends AppCompatActivity {
 
             etTitle = (EditText) findViewById(R.id.etTitle);
             //etStatus = (EditText) findViewById(R.id.etStatus);
-            etLevel = (EditText) findViewById(R.id.etLevel);
+            //etLevel = (EditText) findViewById(R.id.etLevel);
 
             etTitle.setText("");
             //etStatus.setText("");
-            etLevel.setText("");
+            //etLevel.setText("");
         }
 
     }
@@ -70,12 +81,14 @@ public class ListEditItemActivity extends AppCompatActivity {
 
         etTitle = (EditText) findViewById(R.id.etTitle);
         //etStatus = (EditText) findViewById(R.id.etStatus);
-        etLevel = (EditText) findViewById(R.id.etLevel);
+        //etLevel = (EditText) findViewById(R.id.etLevel);
         spStatus=(Spinner) findViewById(R.id.spStatus);
+        spLevel=(Spinner) findViewById(R.id.spLevel);
 
         String editedTitle = etTitle.getText().toString();
         String editedStatus = spStatus.getSelectedItem().toString();
-        String editedLevel = etLevel.getText().toString();
+        //String editedLevel = etLevel.getText().toString();
+        String editedLevel = spLevel.getSelectedItem().toString();
 
         Toast.makeText(this, "Finished editing " + editedTitle, Toast.LENGTH_SHORT).show();
 
