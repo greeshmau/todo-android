@@ -3,6 +3,7 @@
     package="com.umapathi.greeshma.todoapplication">
 
     <application
+        android:name=".ToDoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,5 +19,4 @@
         </activity>
         <activity android:name=".ListEditItemActivity"></activity>
     </application>
-
 </manifest>

@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
     android:weightSum="1">
 
-    <include
+    <!--<include
         android:id="@+id/title"
         layout="@layout/title"
         android:layout_height="60dp"
-        android:layout_width="match_parent"></include>
+        android:layout_width="match_parent"></include>-->
+    <TextView
+        android:id="@+id/tvLevel"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="Priority"
+        android:layout_margin="4dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Title"
+        android:layout_margin="4dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
 </LinearLayout>

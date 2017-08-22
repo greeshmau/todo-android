@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListAddActivity extends AppCompatActivity {
     ArrayList<ToDoItem> arrayOfItems;
@@ -33,10 +36,17 @@ public class ListAddActivity extends AppCompatActivity {
         arrayOfItems = new ArrayList<ToDoItem>();
         todoAdapter  = new TodoAdpater(this, arrayOfItems);
 
-        ToDoItem item = new ToDoItem("Buy Chocolate", "TBD", "HIGH");
+        ToDoItem item = new ToDoItem("Buy Chocolate", "TBD", "HIGH","Aug 30th, 2017");
         todoAdapter.add(item);
-        ToDoItem item2 = new ToDoItem("Buy Chocolate2", "TBD", "MEDIUM");
+
+        ToDoItemTable itemTb = new ToDoItemTable("Buy Chocolate", "TBD", "HIGH","Aug 30th, 2017");
+        itemTb.save();
+
+
+        ToDoItem item2 = new ToDoItem("Buy Chocolate2", "TBD", "MEDIUM", "Sep 13th, 2017");
         todoAdapter.add(item2);
+        ToDoItemTable item2Tb = new ToDoItemTable("Buy Chocolate2", "TBD", "MEDIUM","Sep 13th, 2017");
+        item2Tb.save();
         lvItems.setAdapter(todoAdapter);
 
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -48,6 +58,7 @@ public class ListAddActivity extends AppCompatActivity {
                 i.putExtra("EditingTitle",editItem.Title);
                 i.putExtra("EditingStatus",editItem.Status);
                 i.putExtra("EditingLevel",editItem.Level);
+                i.putExtra("EditingDate",editItem.Level);
                 i.putExtra("Action","Edit");
                 i.putExtra("Position", position);
                 startActivityForResult(i, EDIT_CODE);
@@ -64,23 +75,39 @@ public class ListAddActivity extends AppCompatActivity {
             String Title = data.getExtras().getString("EditedTitle");
             String Level = data.getExtras().getString("EditedLevel");
             String Status = data.getExtras().getString("EditedStatus");
+            String Date = data.getExtras().getString("EditedDate");
+
             int position = data.getExtras().getInt("Position",0);
 
-            ToDoItem editedItem = new ToDoItem(Title,Status,Level);
+            ToDoItem editedItem = new ToDoItem(Title,Status,Level,Date);
             String EditedItem = data.getExtras().getString("EditedItem");
             arrayOfItems.set(position,editedItem);
             todoAdapter.notifyDataSetChanged();
             Toast.makeText(this, EditedItem + " " + Title, Toast.LENGTH_SHORT).show();
+
+            ToDoItemTable itemTb = SQLite.select()
+                    .from(ToDoItemTable.class)
+                    .where(ToDoItemTable_Table.Title.is(Title))
+                    .querySingle();
+
+            SQLite.update(ToDoItemTable.class)
+                    .set(Ol.type.eq("other"))
+                    .where(Ant_Table.type.is("worker"))
+                    .and(Ant_Table.isMale.is(true))
+                    .async()
+                    .execute(); // non-UI blocking
+
         }
 
         if (resultCode == RESULT_OK && requestCode == ADD_CODE) {
             String Title = data.getExtras().getString("EditedTitle");
             String Level = data.getExtras().getString("EditedLevel");
             String Status = data.getExtras().getString("EditedStatus");
+            String Date = data.getExtras().getString("EditedDate");
             //int position = data.getExtras().getInt("Position",0);
 
 
-            ToDoItem item2 = new ToDoItem(Title, Level, Status);
+            ToDoItem item2 = new ToDoItem(Title, Level, Status, Date);
             arrayOfItems.add(item2);
             //todoAdapter.add(item2);
             todoAdapter.notifyDataSetChanged();
