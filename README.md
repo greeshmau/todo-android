@@ -21,11 +21,12 @@ The following **optional** features are implemented:
 * [Yes] Add support for completion due dates for todo items (and display within listview item)
 * [ ] Use a [DialogFragment](http://guides.codepath.com/android/Using-DialogFragment) instead of new Activity for editing items
 * [Yes] Add support for selecting the priority of each todo item (and display in listview item)
-* [ ] Tweak the style improving the UI / UX, play with colors, images or backgrounds
+* [Yes] Tweak the style improving the UI / UX, play with colors, images or backgrounds
 
 The following **additional** features are implemented:
 
 * [ ] List anything else that you can get done to improve the app functionality!
+Sorting Items in ListView based on priority.
 
 ## Video Walkthrough
 
@@ -53,7 +54,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2017] [Greeshma Umapathi]
+    Copyright [2017] Greeshma Umapathi
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

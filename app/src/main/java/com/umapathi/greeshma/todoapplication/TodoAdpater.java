@@ -56,6 +56,10 @@ public class TodoAdpater extends ArrayAdapter {
         {
             tvTitle.setPaintFlags(tvTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
         }
+        else
+        {
+            tvTitle.setPaintFlags(0);
+        }
         //convertView.setInt(R.id.tvTitle, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         return convertView;

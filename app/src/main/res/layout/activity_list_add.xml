@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btn_AddItem"
-        android:layout_width="395dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="?attr/colorAccent"
         android:textColor="?android:attr/colorButtonNormal"
