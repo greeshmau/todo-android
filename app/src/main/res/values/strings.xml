@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">TodoApplication</string>
+    <string name="app_name">Things to do</string>
     <string name="AddItem_label">Add Item</string>
     <string name="TypeNewItem_label">Type New Item</string>
     <string name="EnterNewItem_label">Enter New Item</string>
     <string name="EditItem_label">Edit Item</string>
     <string-array name="status_array">
         <item>DONE</item>
-        <item>TBD</item>
+        <item>TODO</item>
     </string-array>
     <string-array name="level_array">
         <item>HIGH</item>

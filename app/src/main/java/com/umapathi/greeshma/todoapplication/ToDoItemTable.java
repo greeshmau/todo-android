@@ -12,7 +12,7 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table(database = ToDoDatabase.class)
 public class ToDoItemTable extends BaseModel {
     @Column
-    @PrimaryKey
+    @PrimaryKey(autoincrement = true)
     public int id;
 
     @Column

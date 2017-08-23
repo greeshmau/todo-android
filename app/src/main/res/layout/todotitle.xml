@@ -12,19 +12,32 @@
         android:layout_width="match_parent"></include>-->
     <TextView
         android:id="@+id/tvLevel"
-        android:layout_width="90dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Priority"
         android:layout_margin="4dp"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+        android:layout_marginLeft="8dp"
+        android:padding="4dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small" />
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:text="Title"
         android:layout_margin="4dp"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+        android:padding="4dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Date"
+        android:layout_margin="4dp"
+        android:layout_marginRight="8dp"
+        android:padding="4dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small" />
 
 </LinearLayout>

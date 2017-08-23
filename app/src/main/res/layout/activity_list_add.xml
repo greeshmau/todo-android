@@ -8,17 +8,14 @@
 
     <Button
         android:id="@+id/btn_AddItem"
-        android:layout_width="386dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="29dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="395dp"
+        android:layout_height="48dp"
+        android:background="?attr/colorAccent"
+        android:textColor="?android:attr/colorButtonNormal"
         android:onClick="clickAddItem"
         android:text="@string/AddItem_label"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="8dp"
-        tools:layout_editor_absoluteY="528dp"
-        tools:layout_editor_absoluteX="17dp" />
+        app:layout_constraintRight_toRightOf="parent"></Button>
 
     <!--<EditText
         android:id="@+id/et_NewItem"
@@ -50,7 +47,9 @@
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <!--<ListView
         android:id="@+id/lv_AllItems"

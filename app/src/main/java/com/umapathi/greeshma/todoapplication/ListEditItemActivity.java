@@ -28,6 +28,10 @@ public class ListEditItemActivity extends AppCompatActivity {
     int year;
     int month;
     int day;
+    String OldTitle;
+    String OldStatus;
+    String OldLevel;
+    String OldDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,11 @@ public class ListEditItemActivity extends AppCompatActivity {
             String EditingLevel = getIntent().getStringExtra("EditingLevel");
             String EditingDate = getIntent().getStringExtra("EditingDate");
 
+            OldTitle = EditingTitle;
+            OldStatus = EditingStatus;
+            OldLevel = EditingLevel;
+            OldDate = EditingDate;
+
             position = getIntent().getIntExtra("Position", 0);
 
             etTitle = (EditText) findViewById(R.id.etTitle);
@@ -75,7 +84,9 @@ public class ListEditItemActivity extends AppCompatActivity {
             Toast.makeText(this, "Adding ", Toast.LENGTH_SHORT).show();
             position = getIntent().getIntExtra("Position", 0);
 
+
             etTitle = (EditText) findViewById(R.id.etTitle);
+            tvCalendar = (TextView) findViewById(R.id.tvCalendar);
             //etStatus = (EditText) findViewById(R.id.etStatus);
             //etLevel = (EditText) findViewById(R.id.etLevel);
 
@@ -83,6 +94,11 @@ public class ListEditItemActivity extends AppCompatActivity {
             tvCalendar.setText("Aug 30th, 2017");
             //etStatus.setText("");
             //etLevel.setText("");
+
+            OldTitle = "";
+            OldStatus = "";
+            OldLevel = "";
+            OldDate = "";
         }
 
     }
@@ -96,6 +112,7 @@ public class ListEditItemActivity extends AppCompatActivity {
         //etLevel = (EditText) findViewById(R.id.etLevel);
         spStatus=(Spinner) findViewById(R.id.spStatus);
         spLevel=(Spinner) findViewById(R.id.spLevel);
+        tvCalendar = (TextView) findViewById(R.id.tvCalendar);
 
         String editedTitle = etTitle.getText().toString();
         String editedStatus = spStatus.getSelectedItem().toString();
@@ -104,6 +121,11 @@ public class ListEditItemActivity extends AppCompatActivity {
         String editedDate = tvCalendar.getText().toString();
 
         Toast.makeText(this, "Finished editing " + editedTitle, Toast.LENGTH_SHORT).show();
+
+        data.putExtra("OldTitle", OldTitle);
+        data.putExtra("OldStatus", OldStatus);
+        data.putExtra("OldLevel", OldLevel);
+        data.putExtra("OldDate", OldDate);
 
         data.putExtra("EditedTitle", editedTitle);
         data.putExtra("EditedStatus", editedStatus);
@@ -136,7 +158,7 @@ public class ListEditItemActivity extends AppCompatActivity {
             year = datePickerYear;
             month = monthOfYear;
             day = dayOfMonth;
-
+            tvCalendar = (TextView) findViewById(R.id.tvCalendar);
             String dueDate = getStringForDate(year, month, day);
             tvCalendar.setText(dueDate);
         }
