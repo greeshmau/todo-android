@@ -42,11 +42,15 @@ As part of your pre-work submission, please reflect on the app and answer the fo
 
 **Question 1:** "What are your reactions to the Android app development platform so far? Compare and contrast Android's approach to layouts and user interfaces in past platforms you've used."
 
-**Answer:** [Enter your answer here in a paragraph or two].
+**Answer:** In contrast to C# app development, the separation of UI components/View in the layout and the logic/Controller in the Activity presents a very clean framework for development. 
+When using the Android, there is a tendency to mix the behavior of a UI component with the look-and-feel of it, where as when doing web developments, the UI related code is separated in style sheet files and javascript would handle the behavior. 
+Drupal uses module and include files, which is analogous to Activity files in Android. In both cases these tend to get huge and be logic intensive.
 
 **Question 2:** "Take a moment to reflect on the `ArrayAdapter` used in your pre-work. How would you describe an adapter in this context and what is its function in Android? Why do you think the adapter is important? Explain the purpose of the `convertView` in the `getView` method of the `ArrayAdapter`."
 
-**Answer:** [Enter your answer here in a paragraph or two].
+**Answer:** `ArrayAdapter` “ties together” the data-object/string to the UI component. When the state of the data source is changed, it is the `ArrayAdapter` that responds to the change and ensures that the UI component adapts to the change in the data. 
+`convertView` is used to re-use any old view. The `ArrayAdapter` populates the items in the View by calling the `getView` method. When the List is scrolled, the `convertView` checks to see if there are any existing “shells” that are no longer being used; and reuses these to attach the current items to the View. This way only the items currently displayed on the screen are in-memory and in the View list.
+
 
 ## Notes
 
