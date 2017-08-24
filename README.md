@@ -26,7 +26,9 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [x] List anything else that you can get done to improve the app functionality!
-Sorting Items in ListView based on priority.
+
+- Sorting Items in ListView based on priority.
+- Strike-out the already done items
 
 ## Video Walkthrough
 
