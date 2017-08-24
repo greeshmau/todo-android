@@ -34,9 +34,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-
 **Demo with notification** (The notification appears after a little while)
-<img src='http://i.imgur.com/qysl11A.gifv' title='With notification' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/qysl11A.gif' title='With notification' width='' alt='Video Walkthrough' />
 
 **Initial Demo** 
 <img src='http://i.imgur.com/b2oAcfS.gif' title='Initial submission' width='' alt='Video Walkthrough' />
