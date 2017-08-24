@@ -1,21 +1,23 @@
 package com.umapathi.greeshma.todoapplication;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-import android.content.Context;
-
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ListAddActivity extends AppCompatActivity {
@@ -48,7 +50,7 @@ public class ListAddActivity extends AppCompatActivity {
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(this, "Removing", Toast.LENGTH_SHORT).show();
+                ////Toast.makeText(this, "Removing", Toast.LENGTH_SHORT).show();
                 ToDoItem editItem = arrayOfItems.get(position);
                 Intent i = new Intent(ListAddActivity.this, ListEditItemActivity.class);
                 i.putExtra("EditingTitle",editItem.Title);
@@ -66,7 +68,7 @@ public class ListAddActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Toast.makeText(this, "coming back" + resultCode + requestCode, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "coming back" + resultCode + requestCode, Toast.LENGTH_SHORT).show();
         if (resultCode == RESULT_OK && requestCode == EDIT_CODE) {
             String OldTitle = data.getExtras().getString("OldTitle");
             String OldLevel = data.getExtras().getString("OldLevel");
@@ -84,7 +86,7 @@ public class ListAddActivity extends AppCompatActivity {
 
             arrayOfItems.set(position,editedItem);
             todoAdapter.notifyDataSetChanged();
-            Toast.makeText(this, Title + " " + Title, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, Title + " " + Title, Toast.LENGTH_SHORT).show();
 
             SQLite.update(ToDoItemTable.class)
                     .set(ToDoItemTable_Table.Title.eq(Title),
@@ -104,6 +106,8 @@ public class ListAddActivity extends AppCompatActivity {
             String Level = data.getExtras().getString("EditedLevel");
             String Status = data.getExtras().getString("EditedStatus");
             String Date = data.getExtras().getString("EditedDate");
+            long dateInMillis = data.getExtras().getLong("DateInMillis", -1);
+
             //int position = data.getExtras().getInt("Position",0);
 
             String priority = Level.equals("HIGH") ? "A" : (Level.equals("MEDIUM") ?  "B" : "C");
@@ -115,15 +119,16 @@ public class ListAddActivity extends AppCompatActivity {
             ToDoItemTable item2Tb = new ToDoItemTable(Title, Status, Level, Date);
             item2Tb.save();
 
+            addAlarm(item2Tb, dateInMillis);
 
-            Toast.makeText(this, "Added" + " " + Title, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Added" + " " + Title, Toast.LENGTH_SHORT).show();
         }
 
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 ToDoItem delItem = arrayOfItems.get(position);
-                //Toast.makeText(this, "Removing " + delItem.Title, Toast.LENGTH_SHORT).show();
+                ////Toast.makeText(this, "Removing " + delItem.Title, Toast.LENGTH_SHORT).show();
 
                 SQLite.delete(ToDoItemTable.class)
                         .where(ToDoItemTable_Table.Title.eq(delItem.Title))
@@ -136,19 +141,42 @@ public class ListAddActivity extends AppCompatActivity {
         });
     }
 
+    private void addAlarm(ToDoItemTable item2Tb, long dateInMillis) {
+
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.SECOND, 10);
+        Log.i("GREES", String.valueOf(dateInMillis));
+        //final long afterTenSeconds = dateInMillis;//= c.getTimeInMillis();
+
+
+        final Intent myIntent = new Intent("com.umapathi.greeshma.todoapplication.alarm");
+        myIntent.putExtra("title", item2Tb.Title);
+        myIntent.putExtra("titleID", item2Tb.id);
+        myIntent.setPackage(getPackageName());
+
+        AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(), item2Tb.id,
+                myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, dateInMillis, broadcast);
+
+    }
+
+
     public void clickAddItem(View view)
     {
-        //Toast.makeText(this, "Removing", Toast.LENGTH_SHORT).show();
+        ////Toast.makeText(this, "Removing", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(ListAddActivity.this, ListEditItemActivity.class);
         i.putExtra("EditingTitle","NEW");
         i.putExtra("EditingStatus","NEW");
         i.putExtra("EditingLevel","NEW");
         i.putExtra("Action","NEW");
-        sendNotification(view);
+        //sendNotification(view);
         startActivityForResult(i, ADD_CODE);
     }
 
     public void sendNotification(View view) {
+
+
     android.support.v4.app.NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.notification_icon)
                         .setContentTitle("My notification")

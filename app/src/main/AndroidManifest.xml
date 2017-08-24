@@ -18,5 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListEditItemActivity"></activity>
+        <receiver android:name=".AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.umapathi.greeshma.todoapplication.alarm"></action>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

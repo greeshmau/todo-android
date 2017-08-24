@@ -10,7 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -52,7 +51,7 @@ public class ListEditItemActivity extends AppCompatActivity {
 
         String ACTION = getIntent().getStringExtra("Action");
         if(ACTION.equals("Edit")) {
-            Toast.makeText(this, "Editing ", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Editing ", Toast.LENGTH_SHORT).show();
             String EditingTitle = getIntent().getStringExtra("EditingTitle");
             String EditingStatus = getIntent().getStringExtra("EditingStatus");
             String EditingLevel = getIntent().getStringExtra("EditingLevel");
@@ -81,7 +80,7 @@ public class ListEditItemActivity extends AppCompatActivity {
             tvCalendar.setText(EditingDate);
         }
         else if(ACTION.equals("New")) {
-            Toast.makeText(this, "Adding ", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Adding ", Toast.LENGTH_SHORT).show();
             position = getIntent().getIntExtra("Position", 0);
 
 
@@ -120,7 +119,7 @@ public class ListEditItemActivity extends AppCompatActivity {
         String editedLevel = spLevel.getSelectedItem().toString();
         String editedDate = tvCalendar.getText().toString();
 
-        Toast.makeText(this, "Finished editing " + editedTitle, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Finished editing " + editedTitle, Toast.LENGTH_SHORT).show();
 
         data.putExtra("OldTitle", OldTitle);
         data.putExtra("OldStatus", OldStatus);
@@ -132,6 +131,12 @@ public class ListEditItemActivity extends AppCompatActivity {
         data.putExtra("EditedLevel", editedLevel);
         data.putExtra("EditedDate", editedDate);
         data.putExtra("Position", position);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(year, month, day);
+
+        data.putExtra("DateInMillis", calendar.getTimeInMillis());
         data.putExtra("code", 200);
 
         setResult(RESULT_OK, data);
