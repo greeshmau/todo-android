@@ -33,8 +33,12 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-<img src='http://i.imgur.com/OBeMD99.gif' title='With notification' width='' alt='Video Walkthrough' />
 
+
+**Demo with notification** (The notification appears after a little while)
+<img src='http://i.imgur.com/qysl11A.gifv' title='With notification' width='' alt='Video Walkthrough' />
+
+**Initial Demo** 
 <img src='http://i.imgur.com/b2oAcfS.gif' title='Initial submission' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
