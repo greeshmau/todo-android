@@ -31,9 +31,8 @@ The following **additional** features are implemented:
 - Strike-out the already done items
 
 ## Video Walkthrough
-**With Notification**
+
 Here's a walkthrough of implemented user stories:
-**Initial Submission**
 <img src='http://i.imgur.com/OBeMD99.gif' title='With notification' width='' alt='Video Walkthrough' />
 
 <img src='http://i.imgur.com/b2oAcfS.gif' title='Initial submission' width='' alt='Video Walkthrough' />
