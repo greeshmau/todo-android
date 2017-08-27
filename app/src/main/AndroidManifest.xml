@@ -10,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListAddActivity">
+        <activity android:name=".Activity.ListAddActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListEditItemActivity"></activity>
-        <receiver android:name=".AlarmReceiver">
+        <activity android:name=".Activity.ListEditItemActivity"></activity>
+        <receiver android:name=".Receiver.AlarmReceiver">
             <intent-filter>
                 <action android:name="com.umapathi.greeshma.todoapplication.alarm"></action>
             </intent-filter>

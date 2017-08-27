@@ -5,29 +5,24 @@
     android:descendantFocusability="blocksDescendants"
     android:weightSum="1">
 
-    <!--<include
-        android:id="@+id/title"
-        layout="@layout/title"
-        android:layout_height="60dp"
-        android:layout_width="match_parent"></include>-->
     <TextView
         android:id="@+id/tvLevel"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/tvLevel_width"
         android:layout_height="wrap_content"
-        android:text="Priority"
         android:layout_margin="4dp"
         android:layout_marginLeft="8dp"
         android:padding="4dp"
+        android:text="Priority"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small" />
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="160dp"
+        android:layout_width="@dimen/tvTitle_width"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text="Title"
         android:layout_margin="4dp"
+        android:inputType="text"
         android:padding="4dp"
+        android:text="Title"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
     <TextView
         android:id="@+id/tvDate"

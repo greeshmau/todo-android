@@ -1,4 +1,4 @@
-package com.umapathi.greeshma.todoapplication;
+package com.umapathi.greeshma.todoapplication.Model;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
@@ -30,8 +30,7 @@ public class ToDoItemTable extends BaseModel {
     public ToDoItemTable() {
     }
 
-    public ToDoItemTable(String Title, String Status, String Level, String Date)
-    {
+    public ToDoItemTable(String Title, String Status, String Level, String Date) {
 
         this.Title = Title;
         this.Status = Status;

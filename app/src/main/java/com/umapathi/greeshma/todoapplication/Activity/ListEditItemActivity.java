@@ -1,4 +1,4 @@
-package com.umapathi.greeshma.todoapplication;
+package com.umapathi.greeshma.todoapplication.Activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.umapathi.greeshma.todoapplication.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,12 +20,6 @@ import java.util.Locale;
 
 public class ListEditItemActivity extends AppCompatActivity {
 
-    private EditText etTitle;
-    private EditText etLevel;
-    private Spinner spStatus;
-    private Spinner spLevel;
-    private int position;
-    private TextView tvCalendar;
     int year;
     int month;
     int day;
@@ -31,6 +27,25 @@ public class ListEditItemActivity extends AppCompatActivity {
     String OldStatus;
     String OldLevel;
     String OldDate;
+    private EditText etTitle;
+    private EditText etLevel;
+    private Spinner spStatus;
+    private Spinner spLevel;
+    private int position;
+    private TextView tvCalendar;
+
+    public static String ordinal(int i) {
+        String[] sufixes = new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"};
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + sufixes[i % 10];
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +65,7 @@ public class ListEditItemActivity extends AppCompatActivity {
         spLevel.setAdapter(levelAdapter);
 
         String ACTION = getIntent().getStringExtra("Action");
-        if(ACTION.equals("Edit")) {
+        if (ACTION.equals("Edit")) {
             //Toast.makeText(this, "Editing ", Toast.LENGTH_SHORT).show();
             String EditingTitle = getIntent().getStringExtra("EditingTitle");
             String EditingStatus = getIntent().getStringExtra("EditingStatus");
@@ -78,8 +93,7 @@ public class ListEditItemActivity extends AppCompatActivity {
             }
             etTitle.setText(EditingTitle);
             tvCalendar.setText(EditingDate);
-        }
-        else if(ACTION.equals("New")) {
+        } else if (ACTION.equals("New")) {
             //Toast.makeText(this, "Adding ", Toast.LENGTH_SHORT).show();
             position = getIntent().getIntExtra("Position", 0);
 
@@ -109,8 +123,8 @@ public class ListEditItemActivity extends AppCompatActivity {
         etTitle = (EditText) findViewById(R.id.etTitle);
         //etStatus = (EditText) findViewById(R.id.etStatus);
         //etLevel = (EditText) findViewById(R.id.etLevel);
-        spStatus=(Spinner) findViewById(R.id.spStatus);
-        spLevel=(Spinner) findViewById(R.id.spLevel);
+        spStatus = (Spinner) findViewById(R.id.spStatus);
+        spLevel = (Spinner) findViewById(R.id.spLevel);
         tvCalendar = (TextView) findViewById(R.id.tvCalendar);
 
         String editedTitle = etTitle.getText().toString();
@@ -125,7 +139,7 @@ public class ListEditItemActivity extends AppCompatActivity {
         data.putExtra("OldStatus", OldStatus);
         data.putExtra("OldLevel", OldLevel);
         data.putExtra("OldDate", OldDate);
-
+        //Log.i("REGER", editedTitle + editedLevel + editedStatus + editedDate);
         data.putExtra("EditedTitle", editedTitle);
         data.putExtra("EditedStatus", editedStatus);
         data.putExtra("EditedLevel", editedLevel);
@@ -155,6 +169,14 @@ public class ListEditItemActivity extends AppCompatActivity {
 
     }
 
+    private String getStringForDate(int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(year, month, day);
+        Date date = calendar.getTime();
+        return new SimpleDateFormat("MMM", Locale.ENGLISH).format(date.getTime()) + " " + ordinal(Integer.parseInt(new SimpleDateFormat("dd", Locale.ENGLISH).format(date.getTime()))) + ", " + new SimpleDateFormat("yyyy", Locale.ENGLISH).format(date.getTime());
+    }
+
     class mDateSetListener implements DatePickerDialog.OnDateSetListener {
 
         @Override
@@ -166,26 +188,6 @@ public class ListEditItemActivity extends AppCompatActivity {
             tvCalendar = (TextView) findViewById(R.id.tvCalendar);
             String dueDate = getStringForDate(year, month, day);
             tvCalendar.setText(dueDate);
-        }
-    }
-    private String getStringForDate(int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.clear();
-        calendar.set(year, month, day);
-        Date date = calendar.getTime();
-        return new SimpleDateFormat("MMM", Locale.ENGLISH).format(date.getTime()) + " " + ordinal(Integer.parseInt(new SimpleDateFormat("dd", Locale.ENGLISH).format(date.getTime()))) + ", " + new SimpleDateFormat("yyyy", Locale.ENGLISH).format(date.getTime());
-    }
-
-    public static String ordinal(int i) {
-        String[] sufixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
-        switch (i % 100) {
-            case 11:
-            case 12:
-            case 13:
-                return i + "th";
-            default:
-                return i + sufixes[i % 10];
-
         }
     }
 }

@@ -6,10 +6,10 @@
 
     <TextView
         android:id="@+id/tvDate"
-        android:text="Date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:text="@string/Date_label"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
     <TextView
         android:id="@+id/tvCalendar"
@@ -28,8 +28,8 @@
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />-->
     <ImageView
         android:id="@+id/btnCalender"
-        android:layout_width="42dp"
-        android:layout_height="45dp"
+        android:layout_width="@dimen/cal_width"
+        android:layout_height="@dimen/cal_height"
         android:onClick="OnClickCalender"
         app:srcCompat="@drawable/calendar_24dp" />
 </LinearLayout>

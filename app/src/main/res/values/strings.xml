@@ -4,6 +4,10 @@
     <string name="TypeNewItem_label">Type New Item</string>
     <string name="EnterNewItem_label">Enter New Item</string>
     <string name="EditItem_label">Edit Item</string>
+    <string name="Date_label">Date</string>
+    <string name="Priority_label">Priority</string>
+    <string name="Status_label">Status</string>
+    <string name="Title_label">Title</string>
     <string-array name="status_array">
         <item>DONE</item>
         <item>TODO</item>

@@ -1,13 +1,17 @@
-package com.umapathi.greeshma.todoapplication;
+package com.umapathi.greeshma.todoapplication.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.umapathi.greeshma.todoapplication.Model.ToDoItem;
+import com.umapathi.greeshma.todoapplication.R;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,40 +34,34 @@ public class TodoAdpater extends ArrayAdapter {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.todotitle, parent, false);
         }
 
-        TextView tvTitle = (TextView)convertView.findViewById(R.id.tvTitle);
+        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
 
-        TextView tvLevel = (TextView)convertView.findViewById(R.id.tvLevel);
-        TextView tvDate = (TextView)convertView.findViewById(R.id.tvDate);
+        TextView tvLevel = (TextView) convertView.findViewById(R.id.tvLevel);
+        TextView tvDate = (TextView) convertView.findViewById(R.id.tvDate);
 
-        tvTitle.setText(item.Title);
-        tvLevel.setText(item.Level);
-        tvDate.setText(item.Date);
+        tvTitle.setText(item.title);
+        tvLevel.setText(item.level);
+        tvDate.setText(item.date);
 
-        if(item.Level.equals("HIGH"))
-        {
+        Log.i("REGER", item.title + item.level + item.status + item.date);
+        if (item.level.equals("HIGH")) {
             tvLevel.setTextColor(Color.RED);
-        }
-        else if(item.Level.equals("MEDIUM"))
-        {
+        } else if (item.level.equals("MEDIUM")) {
             tvLevel.setTextColor(Color.BLUE);
-        }
-        else if(item.Level.equals("LOW"))
-        {
+        } else if (item.level.equals("LOW")) {
             tvLevel.setTextColor(Color.GREEN);
         }
 
-        if(item.Status.equals("DONE"))
-        {
+        if (item.status.equals("DONE")) {
             tvTitle.setPaintFlags(tvTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-        }
-        else
-        {
+        } else {
             tvTitle.setPaintFlags(0);
         }
         //convertView.setInt(R.id.tvTitle, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         return convertView;
     }
+
     @Override
     public void notifyDataSetChanged() {
         this.setNotifyOnChange(false);

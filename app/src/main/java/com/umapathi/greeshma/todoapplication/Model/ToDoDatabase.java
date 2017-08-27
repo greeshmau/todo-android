@@ -1,4 +1,4 @@
-package com.umapathi.greeshma.todoapplication;
+package com.umapathi.greeshma.todoapplication.Model;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 

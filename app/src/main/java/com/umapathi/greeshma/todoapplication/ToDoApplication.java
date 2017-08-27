@@ -18,6 +18,6 @@ public class ToDoApplication extends Application {
         FlowManager.init(new FlowConfig.Builder(this).build());
         Stetho.initializeWithDefaults(this);
         // add for verbose logging
-        // FlowLog.setMinimumLoggingLevel(FlowLog.Level.V);
+        // FlowLog.setMinimumLoggingLevel(FlowLog.level.V);
     }
 }
