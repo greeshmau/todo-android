@@ -29,6 +29,7 @@ The following **additional** features are implemented:
 
 - Sorting Items in ListView based on priority.
 - Strike-out the already done items
+- Show notifications on the day the item is to be done, **even when the app is closed**.
 
 ## Video Walkthrough
 
